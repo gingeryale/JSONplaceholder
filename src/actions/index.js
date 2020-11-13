@@ -1,11 +1,14 @@
 import jsonPlaceholder from '../api/jsonPlaceholder';
 
-
-
 export const fetchPosts = () => async dispatch => {
     const resposne = await jsonPlaceholder.get('/posts');
 
-    dispatch({ type: 'FETCH_POSTS', payload: resposne })
+    dispatch({ type: 'FETCH_POSTS', payload: resposne.data })
+}
+
+export const fetchUser = (id) => async dispatch => {
+    const resposne = await jsonPlaceholder.get(`/user/${id}`);
+    dispatch({ type: 'FETCH_USER', payload: resposne.data })
 }
 
 
